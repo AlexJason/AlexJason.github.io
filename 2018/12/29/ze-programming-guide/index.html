@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Zilch Editor代码编写规范 | Hexo</title>
+  <meta name="description" content="版本: 3.1更新: March 4, 2019编辑: Alex Cui  Zilch Editor代码编写规范 v3.1C++代码编写样式规定备注 本规定包含C代码编写规范.  标准 所有的C代码使用C11标准(参考ISO&#x2F;IEC 9899:2011). 所有的C++代码使用C++17标准(参考ISO&#x2F;IEC 14882:2017). 在必要的时候, 仅允许在单独的源文件中独立使用以下实验性规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zilch Editor代码编写规范">
+<meta property="og:url" content="http://example.com/2018/12/29/ze-programming-guide/index.html">
+<meta property="og:site_name" content="Alex Cui的博客">
+<meta property="og:description" content="版本: 3.1更新: March 4, 2019编辑: Alex Cui  Zilch Editor代码编写规范 v3.1C++代码编写样式规定备注 本规定包含C代码编写规范.  标准 所有的C代码使用C11标准(参考ISO&#x2F;IEC 9899:2011). 所有的C++代码使用C++17标准(参考ISO&#x2F;IEC 14882:2017). 在必要的时候, 仅允许在单独的源文件中独立使用以下实验性规范">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/1/12/Cc-by-nc-sa_icon.svg">
+<meta property="article:published_time" content="2018-12-29T06:39:17.000Z">
+<meta property="article:modified_time" content="2020-12-06T07:48:27.050Z">
+<meta property="article:author" content="Alex Cui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/1/12/Cc-by-nc-sa_icon.svg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2018/12/29/ze-programming-guide/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Alex Cui的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/alexcui03" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Alex Cui</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">SH退役OIer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/alexcui03" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/06/29/luogu-p5436/" class="title">题解 P5436 【【XR-2】缘分】简单的数论</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-06-29T13:34:49.000Z" itemprop="datePublished">2019-06-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/04/03/luogu-p1059/" class="title">题解 P1059 【明明的随机数】for-else语句的实现</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-04-03T07:26:06.000Z" itemprop="datePublished">2019-04-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/04/01/luogu-p1162/" class="title">题解 P1162 【填涂颜色】使用BFS求连通块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-04-01T14:17:22.000Z" itemprop="datePublished">2019-04-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/21/coding-style/" class="title">本蒟蒻的刷题时的码风~</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-21T12:49:29.000Z" itemprop="datePublished">2019-03-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/13/luogu-p1016/" class="title">题解 P1016 【旅行家的预算】妥妥的贪心</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-13T06:51:14.000Z" itemprop="datePublished">2019-03-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ze-programming-guide" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Zilch Editor代码编写规范
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/12/29/ze-programming-guide/" class="article-date">
+	  <time datetime="2018-12-29T06:39:17.000Z" itemprop="datePublished">2018-12-29</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/29/ze-programming-guide/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>版本: 3.1<br>更新: March 4, 2019<br>编辑: Alex Cui</p>
+<hr>
+<h1 id="Zilch-Editor代码编写规范-v3-1"><a href="#Zilch-Editor代码编写规范-v3-1" class="headerlink" title="Zilch Editor代码编写规范 v3.1"></a>Zilch Editor代码编写规范 v3.1</h1><h2 id="C-代码编写样式规定"><a href="#C-代码编写样式规定" class="headerlink" title="C++代码编写样式规定"></a>C++代码编写样式规定</h2><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ol>
+<li>本规定包含C代码编写规范.</li>
+</ol>
+<h3 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h3><ol>
+<li>所有的C代码使用C11标准(参考ISO/IEC 9899:2011).</li>
+<li>所有的C++代码使用C++17标准(参考ISO/IEC 14882:2017).</li>
+<li>在必要的时候, 仅允许在单独的源文件中独立使用以下实验性规范:<br>库基础v2 TS(参考ISO/IEC TS 19568:2017)<br>并发 TS(参考ISO/IEC TS 19571:2016)<br>事务性内存 TS(参考ISO/IEC TS 19841:2015)</li>
+</ol>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ol>
+<li>所有的C源文件扩展名为<code>*.c</code>.</li>
+<li>所有的C头文件扩展名为<code>*.h</code>.</li>
+<li>所有的C++源文件扩展名为<code>*.cpp</code>.</li>
+<li>实现全部都在头文件内的C++头文件扩展名为<code>*.hpp</code>.</li>
+<li>其他实现有在源文件内的C++头文件扩展名为<code>*.h</code>.</li>
+<li>一个<code>*.h</code>头文件必须有一个对应的同名的源文件提供实现(如果需要的话).</li>
+</ol>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><ol>
+<li>确保所有的源文件都可以在GCC/G++, MSVC/MSVC++, Clang的最新的稳定版(或受到长期支持的LTS版)中编译通过.</li>
+<li>编译时必须使用编译选项将警告视为错误, 且将错误等级设为最高.</li>
+</ol>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ol>
+<li>文件名遵循大驼峰命名法. 所有单词首字母大写, 并依次连接. 其中用以定义类的文件的文件名以类名命名. 例如文件<code>SampleHeader.h</code>, 定义了SampleClass类的头文件为<code>SampleClass.h</code>.</li>
+<li>局部变量, 自动变量, 局部常变量, 全局变量, 成员变量, 函数参数的命名遵循小写下划线命名法. 以单词为单位用下划线连接, 且所有字母为小写, 独立的连续数字作为单独的一个单词. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> global_variable;</span><br><span class="line"><span class="keyword">int</span> variable_15;</span><br></pre></td></tr></table></figure></li>
+<li>全局常变量, 编译时常量, 宏常量, 枚举常量的命名使用大写下划线命名法. 以单词为单位用下划线连接, 且所有字母大写, 独立的连续数字作为单独的一个单词. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> GLOBAL_CONSTANT = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> COMPILE_TIME_CONSTANT = <span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MARCO_CONSTANT 10</span></span><br></pre></td></tr></table></figure></li>
+<li>函数的命名使用小驼峰命名法.第一个单词小写, 其他单词首字母大写, 并依次连接. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">functionName</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getProgramInfo</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getHTTPRequest</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></li>
+<li>类, 非内置类型别名, 数组类型别名的命名使用大驼峰命名法. 所有单词首字母大写, 并依次连接. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleClass</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> SampleClass ClassSample;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> IntArray[<span class="number">10</span>];</span><br></pre></td></tr></table></figure></li>
+<li>内置类型别名, 指针类型别名, 引用类型别名的命名使用帕斯卡命名类型规范. p表示指针类型, r表示引用类型, u表示无符号类型, 后缀数字表示需显示说明的长度, 在类型名被占用的情况下使用后缀_t. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> *pint, &amp;rint;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> uint, *puint, &amp;ruint;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="声明-定义与实现"><a href="#声明-定义与实现" class="headerlink" title="声明, 定义与实现"></a>声明, 定义与实现</h3><ol>
+<li>所有函数（除入口函数外）, 类, 枚举类的定义必须在头文件中定义并在源文件实现.</li>
+<li>仅在本源文件中使用的函数不在头文件中声明.</li>
+<li>入口函数必须写在该源文件的最上方, 且不提前声明.</li>
+<li>内联函数必须在头文件定义并实现.</li>
+<li>所有的类模版, 函数模版必须在头文件中定义并实现.</li>
+<li>所有的全局变量必须在头文件中声明为extern, 并在对应的源文件中初始化. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A.h</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> global_var;</span><br><span class="line"></span><br><span class="line"><span class="comment">// A.cpp</span></span><br><span class="line"><span class="keyword">int</span> global_var;</span><br></pre></td></tr></table></figure></li>
+<li>编译时常量必须在头文件中声明并定义为constexpr, 不使用static修饰.</li>
+</ol>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>文件头注释及函数注释以<code>/**</code>开始, <code>*/</code>结束.</li>
+<li>TODO注释行首以<code>/// TODO:</code>开始.</li>
+<li>注释要求在注释开头记号后留一个空格, 文件头注释和函数注释的注释起始行和结束行不含有注释内容.</li>
+</ol>
+<h3 id="空格与缩进"><a href="#空格与缩进" class="headerlink" title="空格与缩进"></a>空格与缩进</h3><h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h4><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="TODO-1"><a href="#TODO-1" class="headerlink" title="TODO"></a>TODO</h4><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ol>
+<li>类必须显式声明并实现构造函数和析构函数.</li>
+<li>作为非类型转换函数的只有一个非缺省参数的构造函数（复制构造函数和移动构造函数除外）必须显式地声明为explicit.</li>
+<li>抽象基类必须将析构函数定义为纯虚析构函数, 且在源文件中提供空实现. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BaseClass.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    BaseClass();</span><br><span class="line">    <span class="keyword">virtual</span> ~BaseClass() = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BaseClass.cpp</span></span><br><span class="line">BaseClass::BaseClass &#123;&#125;</span><br><span class="line">BaseClass::~BaseClass &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在析构函数中必须显式地delete所有指针成员.</li>
+<li>类的声明中遵循函数在前, 变量在后.分别以public, protected, private的顺序声明, 同一个访问权限块中不能同时出现函数和变量.</li>
+<li>成员函数以构造函数, 类型转换构造函数, 析构函数, 类型转换函数, 运算符重载函数, 其他成员函数为顺序声明. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleClass</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SampleClass();</span><br><span class="line">    SampleClass(<span class="keyword">int</span> obj);</span><br><span class="line">    ~SampleClass();</span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span></span>;</span><br><span class="line">    SampleClass &amp;<span class="keyword">operator</span>+(SampleClass &amp;&amp;obj);</span><br><span class="line">    getValue();</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> protected_member;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> private_member;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>类内函数在使用本类成员变量必须显式的指明this.</li>
+</ol>
+<hr>
+<p>Copyright (c) 2018-2019 Alex Cui.<br>Licensed in <em><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></em>.<br><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Cc-by-nc-sa_icon.svg" alt="CC-BY-NC-SA" title="CC-BY-NC-SA"></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2018/12/29/ze-programming-guide/" title="Zilch Editor代码编写规范" target="_blank" rel="external">http://example.com/2018/12/29/ze-programming-guide/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/alexcui03" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/alexcui03" target="_blank"><span class="text-dark">Alex Cui</span><small class="ml-1x">SH退役OIer</small></a></h3>
+        <div>岭上星空, 月下却无人</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/03/01/about-kid-programming/" title="浅谈少儿编程现状"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/12/21/why-develop-ze/" title="为什么要开发Zilch Editor - 开发者的自述"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/alexcui03" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2020 Alex Cui
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c102a9fb8b309cf5c79',
+    clientSecret: 'e7d820f2a4a57b6be21c0f6eb4d5ace3b7adc975',
+    repo: 'alexcui03.github.io',
+    owner: 'alexcui03',
+    admin: ['alexcui03'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>浅谈少儿编程现状 | Hexo</title>
+  <meta name="description" content="少儿编程要知道现在是块香肉, 很多机构都在往上走, 而一些家长倒是真的愿意去投钱, 我也去过一些机构的一些什么所谓的免费课, 不过我听完的感受嘛……你要不和我说说为什么你说std::cout是函数? 真不知道一些人自己都搞不清楚概念还敢出来教人, 也是无语. 从早的少儿编程来看, 很多都是从LLK的Scratch或者Google的Blocky开始的, 从Scratch 2开始, LLK就架设了Sc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈少儿编程现状">
+<meta property="og:url" content="http://example.com/2019/03/01/about-kid-programming/index.html">
+<meta property="og:site_name" content="Alex Cui的博客">
+<meta property="og:description" content="少儿编程要知道现在是块香肉, 很多机构都在往上走, 而一些家长倒是真的愿意去投钱, 我也去过一些机构的一些什么所谓的免费课, 不过我听完的感受嘛……你要不和我说说为什么你说std::cout是函数? 真不知道一些人自己都搞不清楚概念还敢出来教人, 也是无语. 从早的少儿编程来看, 很多都是从LLK的Scratch或者Google的Blocky开始的, 从Scratch 2开始, LLK就架设了Sc">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-01T09:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-06T07:45:50.746Z">
+<meta property="article:author" content="Alex Cui">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2019/03/01/about-kid-programming/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Alex Cui的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/alexcui03" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Alex Cui</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">SH退役OIer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/alexcui03" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/06/29/luogu-p5436/" class="title">题解 P5436 【【XR-2】缘分】简单的数论</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-06-29T13:34:49.000Z" itemprop="datePublished">2019-06-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/04/03/luogu-p1059/" class="title">题解 P1059 【明明的随机数】for-else语句的实现</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-04-03T07:26:06.000Z" itemprop="datePublished">2019-04-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/04/01/luogu-p1162/" class="title">题解 P1162 【填涂颜色】使用BFS求连通块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-04-01T14:17:22.000Z" itemprop="datePublished">2019-04-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/21/coding-style/" class="title">本蒟蒻的刷题时的码风~</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-21T12:49:29.000Z" itemprop="datePublished">2019-03-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/13/luogu-p1016/" class="title">题解 P1016 【旅行家的预算】妥妥的贪心</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-13T06:51:14.000Z" itemprop="datePublished">2019-03-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-about-kid-programming" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浅谈少儿编程现状
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/03/01/about-kid-programming/" class="article-date">
+	  <time datetime="2019-03-01T09:00:00.000Z" itemprop="datePublished">2019-03-01</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/01/about-kid-programming/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>少儿编程要知道现在是块香肉, 很多机构都在往上走, 而一些家长倒是真的愿意去投钱, 我也去过一些机构的一些什么所谓的免费课, 不过我听完的感受嘛……你要不和我说说为什么你说std::cout是函数? 真不知道一些人自己都搞不清楚概念还敢出来教人, 也是无语.</p>
+<p>从早的少儿编程来看, 很多都是从LLK的Scratch或者Google的Blocky开始的, 从Scratch 2开始, LLK就架设了Scratch线上社区, 宗旨是Imagine, Program, Share, 即创意, 编程, 分享. LLK其实很反对那些其他的编程社区, 原因很简单, 分散了用户, 那么”分享”的力度就没有了, 也就有悖于Scratch的初心了. 再看官网上的另一个亮点就是Remix, 官网上有一点就是分享即公开, 细心一点就会官网上的作品分享以后都是基于CC的Copyleft协议, 你可以自己Remix别人好的项目进行二次创作, 这也是LLK所提倡的.</p>
+<p>然后我们反观国内卡搭等平台, 有一点就是闭源, 你甚至可以把你Remix的东西闭源. 其实从我入百度Scratch吧到现在, 抄袭事件我是看到过不少的, 很多人把别人, 甚至国外的优秀的作品盗过来, 署上自己的名字, 然后闭源对外发布, 他的内心很简单, 你们觉得我是大佬, 我有面子, 或者说我能在比赛中得奖, 就可以了, 所谓的”过程不重要, 重要的是结果”.</p>
+<p>为此甚至于Scratch吧内的一些人(当然也包括我)组织建立了Scratch吧版权保护协会-CN, 专门做对一些存在抄袭盗取现象的作品进行源码比对, 因为线上平台的闭源反正也会发到客户端, 抓下json文件和资源文件就是了.</p>
+<p>那有人就提出来, 我转SWF文件, 或者是我转EXE文件, 我看你怎么破. 那我们回到最初的问题, 为什么要转可执行文件呢? 有人说, 我要让没装Scratch的人运行. 行, 我每次都是这么说的, 你封装个EXE, 就是把Scratch软件和你的项目文件放一起打包个压缩文件写个启动代码, 说白了还是给人家弄了一个Scratch上去, 那你为啥不干脆直接让人家装一个Scratch呢, 一个文件大几十MB舒服吗? 你要说你要闭源, 这才是真实目的吧. 那我们再想想为什么要闭源? 究其根本还是因为有抄袭的存在, 因为国内家长要求的是你有一个怎样怎样的结果, 而不是你有一个怎样的过程. 而孩子的功利心, 更希望能有好的成绩拿出来, 那成绩怎么来的快? 抄. 是的, 抄来的成绩最快了, 又不要动脑子, 我就把东西抄抄过来改个名字交上去就是了, 反正你又不会去查重, 就是这种心理.</p>
+<p>再说培训, 其实我一直很反对学编程去培训. 上次有个人在群里问, 说小孩子怎么去学编程, 有人就说培训班. 我当初就是说, 学编程不推荐去培训班, 还挺有意思的, 那人还和我杠起来了. 说什么你以为人人都是天才什么的, 其实我表态很清楚, 去过培训班学编程的我也遇到过不少, 出来有几个是会写程序的? 有些人连个编程思维都没有, 就知道用程序算小学数学题. 有些培训班我还去上过所谓的免费课, 概念都是错的, 一节课下来错的地方我能写一堆, 错误的思想还留着干啥, 存到明年做臭冬瓜吗(不过臭冬瓜其实挺好吃滴)? 我对学编程一直就是说, 看官方的文档, 官方的教程, 有权威性的书, 而且Scratch本身也不难, 培训你也培不到什么东西. 那他和我说, Scratch的官方教程是英文啊, 看不懂啊, 那我作为Scratch项目翻译的汉语和吴语的成员表示, 我已经把汉化文本丢到你面前了你还要咋样, 对着看不会吗(因为官网还没有正式上线多语言的教程). 说实话, 我觉得现在是家长没有方向, 他不知道怎么去教孩子去编程, 那结果就是孩子也不知道怎么去编程. 这样, 也就容易发现, 为什么国内平台就没有官网上有这么多优秀的作品了.</p>
+<p>所以从少儿编程的角度来说, 我也是绝对反对商业化的, 因为有悖于LLK对Scratch的主旨: Imagine, Program, Share.</p>
+<p>愿你们不忘初心, 砥砺前行.</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2019/03/01/about-kid-programming/" title="浅谈少儿编程现状" target="_blank" rel="external">http://example.com/2019/03/01/about-kid-programming/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/alexcui03" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/alexcui03" target="_blank"><span class="text-dark">Alex Cui</span><small class="ml-1x">SH退役OIer</small></a></h3>
+        <div>岭上星空, 月下却无人</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/03/08/luogu-p1008/" title="题解 P1008 【三连击】用C++模板元编程得出答案"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/12/29/ze-programming-guide/" title="Zilch Editor代码编写规范"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/alexcui03" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2020 Alex Cui
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c102a9fb8b309cf5c79',
+    clientSecret: 'e7d820f2a4a57b6be21c0f6eb4d5ace3b7adc975',
+    repo: 'alexcui03.github.io',
+    owner: 'alexcui03',
+    admin: ['alexcui03'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
